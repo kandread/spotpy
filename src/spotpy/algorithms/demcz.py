@@ -195,6 +195,7 @@ class demcz(_algorithm):
                 burnInpar[i][rep] = vector
                 if self.status.stop:
                     break
+        cur_iter = 0
         if not self.status.stop:
             history.record(burnInpar[i], self._logPs, 1)
 
@@ -211,7 +212,6 @@ class demcz(_algorithm):
             currentLogPs = self._logPs[-1]
 
             # 2)now loop through and sample
-            cur_iter = 0
             accepts_ratio_weighting = 1 - np.exp(-1.0 / 30)
             lastRecalculation = 0
             # continue sampling if:
