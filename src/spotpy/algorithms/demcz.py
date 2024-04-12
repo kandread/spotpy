@@ -195,16 +195,17 @@ class demcz(_algorithm):
                 burnInpar[i][rep] = vector
                 if self.status.stop:
                     break
+
+        # initilize the convergence diagnostic object
+        grConvergence = _GRConvergence()
+        covConvergence = _CovarianceConvergence()
         cur_iter = 0
+
         if not self.status.stop:
             history.record(burnInpar[i], self._logPs, 1)
 
             gamma = None
             self.accepts_ratio = 0.000001
-
-            # initilize the convergence diagnostic object
-            grConvergence = _GRConvergence()
-            covConvergence = _CovarianceConvergence()
 
             # get the starting log objectivefunction and position for each of the
             # chains
