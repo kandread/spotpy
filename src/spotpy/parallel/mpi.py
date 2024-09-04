@@ -143,6 +143,7 @@ class ForEach(object):
                 self.on_worker_terminate()
 
         finally:
+            self.comm.Disconnect()
             exit()
 
     def __send(self, jobiter):
